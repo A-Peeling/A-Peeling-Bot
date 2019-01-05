@@ -12,7 +12,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await client.send_message(message.channel, content = "Hello!")
+    if message.content.startswith('-ping'):
+        await client.send_message(message.channel, content = "Pong!")
 
 client.run('TokenHere')
