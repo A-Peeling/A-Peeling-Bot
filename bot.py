@@ -20,7 +20,7 @@ async def ping(ctx):
 @client.command(pass_context=True, brief='[Owner Only] Changes the current game.', description='[Owner Only] Changes the current game.')
 async def game(ctx, arg):
         if ctx.message.author.id == ownerid:
-         await client.change_status(game=discord.Game(name=arg))
+         await client.change_presence(game=discord.Game(name=arg))
          await client.say("Setting game to " + arg)
   
       
