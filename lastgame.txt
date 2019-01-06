@@ -1,1 +1,1 @@
-Type !game "what you want the bot to play"
+Type ;game "what you want the bot to play"
