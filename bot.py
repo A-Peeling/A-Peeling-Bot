@@ -4,6 +4,8 @@ from discord.ext import commands
 import asyncio
 import random
 
+startup_extensions = ["fun"]
+
 f = open('token.txt', 'r')
 token = f.read()
 f.seek(0)
@@ -22,6 +24,8 @@ f.close()
 
 p = ";"
 client = commands.Bot(command_prefix=p)
+
+
 
 @client.event
 async def on_ready():
@@ -65,17 +69,19 @@ async def guess(ctx):
 async def joined(member : discord.Member):
     """Says when a member joined."""
     await client.say('{0.name} joined this server on {0.joined_at}'.format(member))
-
-@client.command(pass_context=True, brief='It\'s just a 8ball.')
-async def magicball(ctx, *arg):
-    if not arg:
-        await client.say('You need to supply a question')
-    else:
-     ball8 = random.choice(['It is certain','As i see it, yes', 'Dont count on it', 'Without a doubt', 'Definitely', 'Very doubtful', 'Outlook not so good', 'My sources say no', 'My reply is no', 'Most likely', 'You may rely on it', 'Ask again later'])
-     await client.say(ball8)
      
 @client.command(pass_context=True, brief='Work.')
 async def work(ctx):
         await client.say("Yes you can work on the bot https://github.com/A-Peeling/A-Peeling-Bot")
+
+
+if __name__ == "__main__":
+    for extension in startup_extensions:
+        try:
+            client.load_extension(extension)
+            print('Loaded {}'.format(extension))
+        except Exception as e:
+            exc = '{}: {}'.format(type(e).__name__, e)
+            print('Failed to load extension {}\n{}'.format(extension, exc))        
         
 client.run(token)
