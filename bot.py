@@ -73,5 +73,9 @@ async def magicball(ctx, *arg):
     else:
      ball8 = random.choice(['It is certain','As i see it, yes', 'Dont count on it', 'Without a doubt', 'Definitely', 'Very doubtful', 'Outlook not so good', 'My sources say no', 'My reply is no', 'Most likely', 'You may rely on it', 'Ask again later'])
      await client.say(ball8)
-         
+     
+@client.command(pass_context=True, brief='Work.')
+async def work(ctx):
+        await client.say("Yes you can work on the bot https://github.com/A-Peeling/A-Peeling-Bot")
+        
 client.run(token)
