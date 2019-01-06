@@ -1,1 +1,1 @@
-The last game selected goes here
+Type !game "what you want the bot to play"
