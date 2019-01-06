@@ -65,5 +65,13 @@ async def guess(ctx):
 async def joined(member : discord.Member):
     """Says when a member joined."""
     await client.say('{0.name} joined this server on {0.joined_at}'.format(member))
+
+@client.command(pass_context=True, brief='It\'s just a 8ball.')
+async def magicball(ctx, *arg):
+    if not arg:
+        await client.say('You need to supply a question')
+    else:
+     ball8 = random.choice(['It is certain','As i see it, yes', 'Dont count on it', 'Without a doubt', 'Definitely', 'Very doubtful', 'Outlook not so good', 'My sources say no', 'My reply is no', 'Most likely', 'You may rely on it', 'Ask again later'])
+     await client.say(ball8)
          
 client.run(token)
