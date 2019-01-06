@@ -9,7 +9,7 @@ token = f.read()
 f.seek(0)
 f.close()
 
-f = open('token.txt', 'r')
+f = open('owner.txt', 'r')
 ownerid = f.read()
 f.seek(0)
 f.close()
