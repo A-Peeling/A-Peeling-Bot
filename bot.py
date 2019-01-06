@@ -60,5 +60,10 @@ async def guess(ctx):
             await client.say('You are right!')
         else:
             await client.say('Sorry. It is actually {}.'.format(answer))
+
+@client.command()
+async def joined(member : discord.Member):
+    """Says when a member joined."""
+    await client.say('{0.name} joined this server on {0.joined_at}'.format(member))
          
 client.run(token)
