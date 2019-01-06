@@ -4,7 +4,16 @@ from discord.ext import commands
 import asyncio
 import sys
 
-ownerid = "DiscordIdHere"
+f = open('token.txt', 'r')
+token = f.read()
+f.seek(0)
+f.close()
+
+f = open('token.txt', 'r')
+ownerid = f.read()
+f.seek(0)
+f.close()
+
 p = ";"
 client = commands.Bot(command_prefix=p)
 
@@ -14,14 +23,12 @@ async def on_ready():
     
 @client.command(pass_context=True, brief='Responds \'Poing!\'.', description='Responds \'Poing!\', This command is used for testing the bot.')
 async def ping(ctx):
-        description('Says Pong')
         await client.say("Pong!")
         
 @client.command(pass_context=True, brief='[Owner Only] Changes the current game.', description='[Owner Only] Changes the current game.')
 async def game(ctx, arg):
         if ctx.message.author.id == ownerid:
-         await client.change_status(game=discord.Game(name=arg))
+         await client.change_presence(game=discord.Game(name=arg))
          await client.say("Setting game to " + arg)
-  
-      
-client.run('TokenHere')
+
+client.run(token)
