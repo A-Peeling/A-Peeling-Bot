@@ -28,7 +28,7 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))    
     await client.change_presence(game=discord.Game(name=argtxt))
     
-@client.command(pass_context=True, brief='Responds \'Poing!\'.', description='Responds \'Poing!\', This command is used for testing the bot.')
+@client.command(pass_context=True, brief='Responds \'Pong!\'.', description='Responds \'Pong!\', This command is used for testing the bot.')
 async def ping(ctx):
         await client.say("Pong!")
         
