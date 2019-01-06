@@ -1,29 +1,27 @@
 import discord
-import asyncio 
+from discord.ext.commands import Bot
+from discord.ext import commands
+import asyncio
+import sys
 
-client = discord.Client()
+ownerid = "DiscordIdHere"
+p = ";"
+client = commands.Bot(command_prefix=p)
 
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    print('We have logged in as {0.user}'.format(client))    
     
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    p = ";"
-    if message.content.startswith(p+'ping'):
-        await client.send_message(message.channel, content = "Pong!")
-
-    if message.content.startswith(p+'help'):
-        embed = discord.Embed(title="Steam Group", colour=discord.Colour(0x33ff8c), url="https://steamcommunity.com/groups/A-Peeling", description="Commands:")
-
-        embed.set_thumbnail(url="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/5d/5d6905edee2a6e1b5a8f1cfbc650caf27afa92f1_full.jpg")
-        embed.set_footer(text="Bozz Gay")
-
-        embed.add_field(name="-ping", value="It just says 'Pong!'", inline=True)
-        embed.add_field(name="-help", value="Brings up this window, you just used this command btw.", inline=True)
-
-        await client.send_message(message.channel, embed=embed)
-
+@client.command(pass_context=True, brief='Responds \'Poing!\'.', description='Responds \'Poing!\', This command is used for testing the bot.')
+async def ping(ctx):
+        description('Says Pong')
+        await client.say("Pong!")
+        
+@client.command(pass_context=True, brief='[Owner Only] Changes the current game.', description='[Owner Only] Changes the current game.')
+async def game(ctx, arg):
+        if ctx.message.author.id == ownerid:
+         await client.change_status(game=discord.Game(name=arg))
+         await client.say("Setting game to " + arg)
+  
+      
 client.run('TokenHere')
