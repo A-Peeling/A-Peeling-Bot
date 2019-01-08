@@ -46,25 +46,6 @@ async def game(ctx, arg):
          file.close()
          await client.change_presence(game=discord.Game(name=arg))
 
-@client.command(pass_context=True, brief='Guessing Game', description='Guess the Correct Number to win.')
-async def guess(ctx):
-    
-        await client.say('Guess a number between 1 to 10')
-
-        def guess_check(m):
-            return m.content.isdigit()
-
-        guess = await client.wait_for_message(timeout=5.0, author=ctx.message.author, check=guess_check)
-        answer = random.randint(1, 10)
-        if guess is None:
-            fmt = 'Sorry, you took too long. It was {}.'
-            await client.say(fmt.format(answer))
-            return
-        if int(guess.content) == answer:
-            await client.say('You are right!')
-        else:
-            await client.say('Sorry. It is actually {}.'.format(answer))
-
 @client.command()
 async def joined(member : discord.Member):
     """Says when a member joined."""
