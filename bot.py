@@ -6,6 +6,7 @@ import random
 
 startup_extensions = ["fun"]
 
+#These reads what you put in the files.
 f = open('token.txt', 'r')
 token = f.read()
 f.seek(0)

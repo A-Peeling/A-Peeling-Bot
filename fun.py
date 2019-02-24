@@ -9,6 +9,7 @@ class Fun():
     def __init__(self, bot):
         self.bot = bot
         
+        
     @commands.command(pass_context=True, brief='It\'s just a 8ball.')
     async def magicball(self, ctx, *arg):
         if not arg:
@@ -35,6 +36,18 @@ class Fun():
             await self.bot.say('You are right!')
         else:
             await self.bot.say('Sorry. It is actually {}.'.format(answer))
+
+    @commands.command()
+    async def roll(self, dice : str):
+        """Rolls a dice in NdN format."""
+        try:
+            rolls, limit = map(int, dice.split('d'))
+        except Exception:
+            await self.bot.say('Format has to be in NdN!')
+            return
+
+        result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
+        await self.bot.say(result)    
             
 def setup(bot):
     bot.add_cog(Fun(bot))
