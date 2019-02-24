@@ -1,3 +1,5 @@
 config/token.ini
 owner.txt
 token.txt
+__pycache__/fun.cpython-35.pyc
+*.pyc
