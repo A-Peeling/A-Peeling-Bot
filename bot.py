@@ -1,8 +1,5 @@
 import discord
-from discord.ext.commands import Bot
 from discord.ext import commands
-import asyncio
-import random
 
 startup_extensions = ["fun"]
 
@@ -25,7 +22,6 @@ f.close()
 
 p = ";"
 client = commands.Bot(command_prefix=p)
-
 
 
 @client.event
