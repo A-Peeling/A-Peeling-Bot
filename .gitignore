@@ -3,3 +3,10 @@ owner.txt
 token.txt
 __pycache__/fun.cpython-35.pyc
 *.pyc
+lastgame.txt
+.idea/A-Peeling-Bot.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+owner.txt
