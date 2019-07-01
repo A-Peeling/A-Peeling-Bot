@@ -51,5 +51,6 @@ class Fun(commands.Cog):
     async def define_error(self, ctx, error):
         await ctx.send('Format has to be in NDN. For example 1d20 rolls 1 20 sided dice.')
 
+
 def setup(bot):
     bot.add_cog(Fun(bot))

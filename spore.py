@@ -4,6 +4,7 @@ import os
 from discord.ext import commands
 from SporeAPICoreUtils import *
 
+
 class Spore(commands.Cog):
 
     def __init__(self, bot):
@@ -58,5 +59,7 @@ class Spore(commands.Cog):
         embed.add_field(name="Total Users", value=StatsUsers())
         embed.add_field(name="New Users in the past 24 Hours", value=StatsUsersToday())
         await ctx.send(embed=embed)
+
+
 def setup(bot):
     bot.add_cog(Spore(bot))
