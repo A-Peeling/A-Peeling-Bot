@@ -32,7 +32,7 @@ class Spore(commands.Cog):
                 else:
                     image = "http://www.spore.com/static/war/images/global/avatar_none.png"
                 if TryGetNodeValues(myxml, "status") == ['0']:
-                    tagline = "User not found"
+                    tagline = "**User not found**"
 
             embed = discord.Embed(title=arg,description=tagline,url=profileurl)
             embed.set_thumbnail(url=image)
@@ -93,6 +93,10 @@ class Spore(commands.Cog):
                 await ctx.send("This asset does not exist. You can get the id for an asset from the end of it's url."
                                " For example https://www.spore.com/sporepedia#qry=sast-501071885961"
                                " has the id of 501071885961")
+        else:
+            await ctx.send("You need to send an asset ID. You can get the id for an asset from the end of it's url."
+                           " For example https://www.spore.com/sporepedia#qry=sast-501071885961"
+                           " has the id of 501071885961")
 
 
 def setup(bot):
