@@ -56,7 +56,7 @@ class Spore(commands.Cog):
         embed.add_field(name="Total Uploads", value=StatsAtTime())
         embed.add_field(name="Uploads Today", value=StatsOfDay())
         embed.add_field(name="Total Users", value=StatsUsers())
-        embed.add_field(name="Total **SITE** Log Ins Today", value=StatsUsersToday())
+        embed.add_field(name="New Users in the past 24 Hours", value=StatsUsersToday())
         await ctx.send(embed=embed)
 def setup(bot):
     bot.add_cog(Spore(bot))
