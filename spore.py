@@ -70,16 +70,23 @@ class Spore(commands.Cog):
                 if(GetXMLForREST(InfoForAssetURL(arg))):
                         name = TryGetNodeValues(GetXMLForREST(InfoForAssetURL(arg)), "name")[0]
                         author = TryGetNodeValues(GetXMLForREST(InfoForAssetURL(arg)), "author")[0]
-                embed = discord.Embed(title=name,
-                                      description=GetDescriptionForAsset(arg)[0]
-                                      , url="https://www.spore.com/sporepedia#qry=sast-"+arg)
+                if GetDescriptionForAsset(arg)[0] == 'NULL':
+                    embed = discord.Embed(title=name,
+                                          description='No description.'
+                                          , url="https://www.spore.com/sporepedia#qry=sast-" + arg)
+                else:
+                    embed = discord.Embed(title=name,
+                                          description=GetDescriptionForAsset(arg)[0]
+                                          , url="https://www.spore.com/sporepedia#qry=sast-"+arg)
                 embed.set_thumbnail(url=AssetURL(arg))
-                print(str(GetTagsForAsset(arg)))
                 embed.add_field(name="Author", value=author)
-                tag = ""
-                for i in GetTagsForAsset(arg):
-                    tag += i+", "
-                embed.add_field(name="Tags", value=tag)
+                if not TryGetNodeValues(GetXMLForREST(InfoForAssetURL(arg)), "tags") == ['NULL']:
+                    tag = ""
+                    for i in GetTagsForAsset(arg):
+                        tag += i+", "
+                    embed.add_field(name="Tags", value=tag)
+                else:
+                    embed.add_field(name="Tags", value="No tags")
                 embed.add_field(name="Last Comment", value=lasts+lastc)
                 await ctx.send(embed=embed)
             else:
