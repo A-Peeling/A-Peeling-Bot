@@ -55,8 +55,8 @@ class Spore(commands.Cog):
         embed.add_field(name="New Users in the past 24 Hours", value=StatsUsersToday())
         await ctx.send(embed=embed)
 
-    @commands.command()
-    async def asset(self,ctx, arg=None):
+    @commands.command(brief="Displays information about a spore creation")
+    async def asset(self, ctx, arg=None):
         if arg:
             if TryGetNodeValues(GetXMLForREST(InfoForAssetURL(arg)), "status") == ['1']:
                 if(GetXMLForREST(CommentsForAssetURL(arg,0,1))):
