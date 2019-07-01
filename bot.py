@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-startup_extensions = ["fun"]
+startup_extensions = ["fun", "spore"]
 
 #These reads what you put in the files.
 f = open('token.txt', 'r')
