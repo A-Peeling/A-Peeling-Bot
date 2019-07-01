@@ -459,3 +459,26 @@ def StatsAtTime():
         num = TryGetNodeValues(myxml, "totalUploads")
     return num[0]
 
+def StatsOfDay():
+    url = "http://www.spore.com/rest/stats"
+    myxml = GetXMLForREST(url)
+    num = []
+    if (myxml):
+        num = TryGetNodeValues(myxml, "dayUploads")
+    return num[0]
+
+def StatsUsers():
+    url = "http://www.spore.com/rest/stats"
+    myxml = GetXMLForREST(url)
+    num = []
+    if (myxml):
+        num = TryGetNodeValues(myxml, "totalUsers")
+    return num[0]
+
+def StatsUsersToday():
+    url = "http://www.spore.com/rest/stats"
+    myxml = GetXMLForREST(url)
+    num = []
+    if (myxml):
+        num = TryGetNodeValues(myxml, "dayUsers")
+    return num[0]

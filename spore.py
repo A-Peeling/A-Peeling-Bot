@@ -9,7 +9,7 @@ class Spore(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="displays profile information about user")
+    @commands.command(brief="Displays profile information about user")
     async def profile(self, ctx, arg=None):
         if arg:
             buddies = str(len(GetBuddiesForUser(arg)))
@@ -46,6 +46,17 @@ class Spore(commands.Cog):
         else:
             await ctx.send("Please provide a Spore screen name")
 
-
+    @commands.command(brief="Displays status about spore")
+    async def sporestats(self, ctx, arg=None):
+        embed = discord.Embed(
+            title="Spore Stats",
+            description="The current Spore Stats",
+            url="http://www.spore.com/sporepedia"
+        )
+        embed.add_field(name="Total Uploads", value=StatsAtTime())
+        embed.add_field(name="Uploads Today", value=StatsOfDay())
+        embed.add_field(name="Total Users", value=StatsUsers())
+        embed.add_field(name="Total **SITE** Log Ins Today", value=StatsUsersToday())
+        await ctx.send(embed=embed)
 def setup(bot):
     bot.add_cog(Spore(bot))
