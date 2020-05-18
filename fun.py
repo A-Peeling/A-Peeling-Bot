@@ -63,8 +63,8 @@ class Fun(commands.Cog):
         print(filepath)
         fullpath = "days/" + str(dayofweek) + "/" + filepath
         file = discord.File(fullpath, filename=filepath)
-        days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-        await ctx.send("it is " + days[dayofweek] + " or as i like to call it... " + days[dayofweek], file=file)
+        days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        await ctx.send("It is " + days[dayofweek] + " or as I like to call it... " + days[dayofweek]+".", file=file)
 
     @calendar.error
     async def calendar_error(self, ctx, error):

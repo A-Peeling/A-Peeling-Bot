@@ -23,6 +23,12 @@ f.close()
 p = ";"
 client = commands.Bot(command_prefix=p)
 
+@client.event
+async def on_command_error(ctx, error):
+    err = getattr(error, "original", error)
+
+    if isinstance(err, commands.CommandNotFound):
+        return
 
 @client.event
 async def on_ready():
