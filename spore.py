@@ -37,7 +37,11 @@ class Spore(commands.Cog):
             embed = discord.Embed(title=arg,description=tagline,url=profileurl)
             embed.set_thumbnail(url=image)
             embed.add_field(name="Creations", value="This player has made " + creations + " creations")
-            embed.add_field(name="Buddies", value="This player currently has " + buddies + " buddy(ies)")
+            if int(buddies) == 1:
+                Bud_STR = "buddy"
+            else:
+                Bud_STR = "buddies"
+            embed.add_field(name="Buddies", value="This player currently has " + buddies + " " + Bud_STR)
             await ctx.send(embed=embed)
         else:
             await ctx.send("Please provide a Spore screen name")

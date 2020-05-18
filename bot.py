@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-startup_extensions = ["fun", "spore"]
+startup_extensions = ["fun", "spore", "APIs"]
 
 #These reads what you put in the files.
 f = open('token.txt', 'r')
@@ -43,18 +43,12 @@ async def game(ctx, *, arg: str):
     with open('lastgame.txt', 'w') as file:
         file.write(arg)
         file.close()
-    await  client.change_presence(activity=discord.Game(name=arg))
-
-
-@client.command()
-async def joined(ctx, member: discord.Member):
-    """Says when a member joined."""
-    await ctx.send('{0.name} joined this server on {0.joined_at}'.format(member))
+    await client.change_presence(activity=discord.Game(name=arg))
 
 
 @client.command(pass_context=True, brief='Work.')
 async def work(ctx):
-    await ctx.send("Yes you can work on the bot https://github.com/A-Peeling/A-Peeling-Bot")
+    await ctx.send("Yes Bozz, you can work on the bot https://github.com/A-Peeling/A-Peeling-Bot")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,9 @@
 from discord.ext import commands
 import random
 import asyncio
+import os
+import datetime
+import discord
 
 class Fun(commands.Cog):
     
@@ -50,6 +53,18 @@ class Fun(commands.Cog):
     @roll.error
     async def define_error(self, ctx, error):
         await ctx.send('Format has to be in NDN. For example 1d20 rolls 1 20 sided dice.')
+
+    @commands.command(brief="Sends an image for the day of the week")
+    async def calendar(self, ctx):
+        dayofweek = datetime.datetime.today().weekday()
+        filepath = random.choice(
+            [x for x in os.listdir("days/" + str(dayofweek)) if
+             os.path.isfile(os.path.join("days/" + str(dayofweek), x))])
+        print(filepath)
+        fullpath = "days/" + str(dayofweek) + "/" + filepath
+        file = discord.File(fullpath, filename=filepath)
+        days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+        await ctx.send("it is " + days[dayofweek] + " or as i like to call it... " + days[dayofweek], file=file)
 
 
 def setup(bot):
