@@ -66,6 +66,9 @@ class Fun(commands.Cog):
         days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
         await ctx.send("it is " + days[dayofweek] + " or as i like to call it... " + days[dayofweek], file=file)
 
+    @calendar.error
+    async def calendar_error(self, ctx, error):
+        await  ctx.send("CALENDAR ERROR")
 
 def setup(bot):
     bot.add_cog(Fun(bot))

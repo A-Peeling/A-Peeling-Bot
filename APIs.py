@@ -4,12 +4,19 @@ import ast
 import discord
 import datetime
 
+def exists(path):            # Checks if a request is ok.
+    r = requests.head(path)  # This is also a functions so I can use it for more things to check for errors
+    return r.status_code == requests.codes.ok
 
 def sendgarf(one, two):
     garfurl = "https://d1ejxu6vysztl5.cloudfront.net/comics/garfield/" + one + '/' + two + ".gif"
-    e = discord.Embed(title="Garfield Comic for " + two)
-    e.set_image(url=garfurl)
-    return e
+    if(exists(garfurl)):
+        e = discord.Embed(title="Garfield Comic for " + two)
+        e.set_image(url=garfurl)
+        return e
+    else:
+        e = discord.Embed(title="Invalid Garfield Comic. You better not be looking for Heathcliff comics. :rage:")
+        return e
 
 class APIs(commands.Cog):
 
