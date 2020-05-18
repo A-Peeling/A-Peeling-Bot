@@ -5,3 +5,4 @@ BTW don't use the SporeAPICoreUtil from python 2 it won't work.
 ## Requriments
 Python 3.5.3+\
 Discord.py
+Requests
