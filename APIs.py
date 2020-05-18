@@ -15,7 +15,8 @@ def sendgarf(one, two):
         e.set_image(url=garfurl)
         return e
     else:
-        e = discord.Embed(title="Invalid Garfield Comic. You better not be looking for Heathcliff comics. :rage:")
+        e = discord.Embed(title="Invalid Garfield Comic. You better not be looking for Heathcliff comics. :rage:",
+                          description='The comic you want to see has to be in YYYY-MM-DD format. For example 2000-07-30')
         return e
 
 class APIs(commands.Cog):
