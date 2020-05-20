@@ -60,7 +60,6 @@ class Fun(commands.Cog):
         filepath = random.choice(
             [x for x in os.listdir("days/" + str(dayofweek)) if
              os.path.isfile(os.path.join("days/" + str(dayofweek), x))])
-        print(filepath)
         fullpath = "days/" + str(dayofweek) + "/" + filepath
         file = discord.File(fullpath, filename=filepath)
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
