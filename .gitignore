@@ -1,4 +1,3 @@
-config/token.ini
 owner.txt
 token.txt
 __pycache__/fun.cpython-35.pyc
@@ -9,4 +8,3 @@ lastgame.txt
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
-owner.txt
