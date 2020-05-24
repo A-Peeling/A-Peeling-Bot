@@ -20,7 +20,7 @@ f.seek(0)
 f.close()
 
 
-p = ":levitate:"
+p = "0"
 client = commands.Bot(command_prefix=p)
 
 @client.event
