@@ -20,7 +20,7 @@ f.seek(0)
 f.close()
 
 
-p = "0"
+p = ";"
 client = commands.Bot(command_prefix=p)
 
 @client.event
