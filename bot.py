@@ -53,7 +53,9 @@ async def game(ctx, *, arg: str):
 
 @client.command(pass_context=True, brief='Work.')
 async def work(ctx):
-    await ctx.send("Yes Bozz, you can work on the bot https://github.com/A-Peeling/A-Peeling-Bot")
+    user = ctx.author.name
+    print(user)
+    await ctx.send("Yes " + user + ", you can work on the bot https://github.com/A-Peeling/A-Peeling-Bot")
 
 
 if __name__ == "__main__":
