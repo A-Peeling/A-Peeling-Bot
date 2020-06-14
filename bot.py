@@ -38,8 +38,7 @@ async def on_ready():
 
 @client.command(pass_context=True, brief='Responds \'Pong!\'.', description='Responds \'Pong!\', This command is used for testing the bot.')
 async def ping(ctx):
-    await ctx.send("Pong!")
-
+    await ctx.send('Pong! {0}'.format(round(client.latency, 4) * 1000) + ' ms')
 
 @client.command(pass_context=True, brief='[Owner Only] Changes the current game.', description='[Owner Only] Changes the current game.')
 async def game(ctx, *, arg: str):
