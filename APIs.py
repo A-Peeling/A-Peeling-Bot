@@ -44,6 +44,23 @@ class APIs(commands.Cog):
             await ctx.send(embed=sendgarf(arg[0:4], arg))
         else:
             await ctx.send(embed=sendgarf(str(datetime.datetime.now().date())[0:4], str(datetime.datetime.now().date())))
+    
+    @commands.command()
+    async def folding(self, ctx):
+        team = 267098
+        getgot = requests.get("https://stats.foldingathome.org/api/team/" + str(team))
+        getgot = getgot.content.decode("utf-8")
+        getgot = ast.literal_eval(getgot)
+        embed = discord.Embed(title="Stats for " + getgot['name'], url="https://stats.foldingathome.org/team/" + str(team), description="on Folding@home", color=0xd68717)
+        embed.set_thumbnail(url=getgot['logo'])
+        embed.add_field(name="Last Work Unit", value=getgot['last'], inline=True)
+        embed.add_field(name="Active CPUs", value=getgot['active_50'], inline=True)
+        embed.add_field(name="Grand Score", value=getgot['credit'], inline=True)
+        embed.add_field(name="Work Unit Count", value=getgot['wus'], inline=True)
+        embed.add_field(name="Team Ranking", value=getgot['rank'], inline=True)
+        #embed.add_field(name="Donors", value=, inline=False)
+        embed.set_footer(text="Fold with us sometime :^)")
+        await ctx.send(embed=embed)
 
 
 def setup(bot):
