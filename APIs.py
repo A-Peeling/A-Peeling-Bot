@@ -16,7 +16,7 @@ def sendgarf(one, two):
         return e
     else:
         e = discord.Embed(title="Invalid Garfield Comic. You better not be looking for Heathcliff comics. :rage:",
-                          description='The comic you want to see has to be in YYYYMMDD format. For example 20000730')
+                          description='The comic you want to see has to be in YYYY-MM-DD format. For example 2000-07-30')
         return e
 
 class APIs(commands.Cog):
@@ -41,10 +41,12 @@ class APIs(commands.Cog):
     @commands.command(brief="Gets the Garfield comic for today, or specify a date using YYYYMMDD format")
     async def garfield(self, ctx, arg=None):
         if arg:
-            await ctx.send(embed=sendgarf(arg[0:4], arg[2:]))
+            garf = arg.replace('-','')
+            await ctx.send(embed=sendgarf(garf[0:4], garf[2:]))
         else:
+            garfone = str(datetime.datetime.now().date())[0:4]
             garftwo = str(datetime.datetime.now().date())[2:].replace('-','')
-            await ctx.send(embed=sendgarf(str(datetime.datetime.now().date())[0:4], garftwo))
+            await ctx.send(embed=sendgarf(garfone, garftwo))
     
     @commands.command()
     async def folding(self, ctx):
