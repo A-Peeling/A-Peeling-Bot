@@ -9,14 +9,14 @@ def exists(path):            # Checks if a request is ok.
     return r.status_code == requests.codes.ok
 
 def sendgarf(one, two):
-    garfurl = "https://d1ejxu6vysztl5.cloudfront.net/comics/garfield/" + one + '/' + two + ".gif"
+    garfurl = "http://www.professorgarfield.org/ipi1200/" + one + '/ga' + two + ".gif"
     if(exists(garfurl)):
-        e = discord.Embed(title="Garfield Comic for " + two)
+        e = discord.Embed(title="Garfield Comic for " + one + "-" + two[2:4] + "-" + two [4:])
         e.set_image(url=garfurl)
         return e
     else:
         e = discord.Embed(title="Invalid Garfield Comic. You better not be looking for Heathcliff comics. :rage:",
-                          description='The comic you want to see has to be in YYYY-MM-DD format. For example 2000-07-30')
+                          description='The comic you want to see has to be in YYYYMMDD format. For example 20000730')
         return e
 
 class APIs(commands.Cog):
@@ -38,12 +38,13 @@ class APIs(commands.Cog):
                        + " " + req['seasoning']['url'] + "" \
                        + " " + req['shell']['url'])
 
-    @commands.command(brief="Gets the Garfield comic for today, or specify a date using YYYY-MM-DD format")
+    @commands.command(brief="Gets the Garfield comic for today, or specify a date using YYYYMMDD format")
     async def garfield(self, ctx, arg=None):
         if arg:
-            await ctx.send(embed=sendgarf(arg[0:4], arg))
+            await ctx.send(embed=sendgarf(arg[0:4], arg[2:]))
         else:
-            await ctx.send(embed=sendgarf(str(datetime.datetime.now().date())[0:4], str(datetime.datetime.now().date())))
+            garftwo = str(datetime.datetime.now().date())[2:].replace('-','')
+            await ctx.send(embed=sendgarf(str(datetime.datetime.now().date())[0:4], garftwo))
     
     @commands.command()
     async def folding(self, ctx):
