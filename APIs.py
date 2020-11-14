@@ -38,7 +38,7 @@ class APIs(commands.Cog):
                        + " " + req['seasoning']['url'] + "" \
                        + " " + req['shell']['url'])
 
-    @commands.command(brief="Gets the Garfield comic for today, or specify a date using YYYYMMDD format")
+    @commands.command(brief="Gets the Garfield comic for today, or specify a date using YYYY-MM-DD format")
     async def garfield(self, ctx, arg=None):
         if arg:
             garf = arg.replace('-','')
