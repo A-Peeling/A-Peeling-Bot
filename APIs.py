@@ -3,6 +3,10 @@ import requests
 import ast
 import discord
 import datetime
+import os
+import time
+from pyfiglet import Figlet
+
 
 def exists(path):            # Checks if a request is ok.
     r = requests.head(path)  # This is also a functions so I can use it for more things to check for errors
@@ -64,6 +68,38 @@ class APIs(commands.Cog):
         #embed.add_field(name="Donors", value=, inline=False)
         embed.set_footer(text="Fold with us sometime :^)")
         await ctx.send(embed=embed)
+
+    @commands.command(brief="Some cool text stuff ngl.")
+    async def figlet(self, ctx, arg1=None, *arg2):
+        if arg1 and arg2:
+            f = Figlet(font=arg1)
+            epictext = ''
+            for x in arg2:
+                epictext += " "+x
+            storefiglet = f.renderText(epictext[1:])
+            await ctx.send("```"+storefiglet+"```")
+        else:
+            await ctx.send('To use this command it\'s ;figlet (font) (text). '
+                           'For a list of fonts use the fontlist command.')
+
+    @commands.command(brief="Font list for Figlet.")
+    async def fontlist(self, ctx):
+        fonts = os.listdir('./pyfiglet/fonts')
+        fontlist = ""
+        for x in fonts:
+            fontlist += ", " + x[:-4]
+            print(x)
+        print(fontlist[2:-18])
+        await ctx.send("Check your DMs for the fonts ;).")
+        await ctx.message.author.send("```"+fontlist[2:1000]+"```")
+        time.sleep(.300)
+        await ctx.message.author.send("```" + fontlist[1000:2003] + "```")
+        time.sleep(.300)
+        await ctx.message.author.send("```" + fontlist[2003:3000] + "```")
+        time.sleep(.300)
+        await ctx.message.author.send("```" + fontlist[3000:4005] + "```")
+        time.sleep(.300)
+        await ctx.message.author.send("```" + fontlist[4005:-18] + "```")
 
 
 def setup(bot):
