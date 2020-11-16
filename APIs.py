@@ -71,7 +71,7 @@ class APIs(commands.Cog):
 
     @commands.command(brief="Some cool text stuff ngl.")
     async def figlet(self, ctx, arg1=None, *arg2):
-        if arg1 or arg2:
+        if arg1 and arg2:
             f = Figlet(font=arg1)
             epictext = ''
             for x in arg2:
