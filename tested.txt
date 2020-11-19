@@ -1,0 +1,7 @@
+tested systems:
+windows 10
+linux
+openbsd
+debian gnu/hurd (with ln -s /dev/random /dev/urandom)
+
+so basically itll work anywhere ya got python3
