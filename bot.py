@@ -10,7 +10,7 @@ f.seek(0)
 f.close()
 
 f = open('owner.txt', 'r')
-ownerid = f.read()
+ownerId = f.read()
 f.seek(0)
 f.close()
 
@@ -42,13 +42,14 @@ async def ping(ctx):
 
 @client.command(pass_context=True, brief='[Owner Only] Changes the current game.', description='[Owner Only] Changes the current game.')
 async def game(ctx, *, arg: str):
-    if ctx.message.author.id == ownerid:
-        await ctx.send("Setting game to " + arg)
+    if str(ctx.message.author.id) == str(ownerId):
+        print(ownerId)
+        await ctx.send("Setting game to " + arg +".")
         print('Game set to '+ arg)
-    with open('lastgame.txt', 'w') as file:
-        file.write(arg)
-        file.close()
-    await client.change_presence(activity=discord.Game(name=arg))
+        with open('lastgame.txt', 'w') as file:
+            file.write(arg)
+            file.close()
+        await client.change_presence(activity=discord.Game(name=arg))
 
 
 @client.command(pass_context=True, brief='Work.')

@@ -87,8 +87,11 @@ class APIs(commands.Cog):
         fonts = os.listdir('./pyfiglet/fonts')
         fontlist = ""
         for x in fonts:
-            fontlist += ", " + x[:-4]
-            print(x)
+            if (x == "__pycache__") or (x == "__init__.py"):
+                print("epic")
+            else:
+                fontlist += ", " + x[:-4]
+                print(x)
         print(fontlist[2:-18])
         await ctx.send("Check your DMs for the fonts ;).")
         await ctx.message.author.send("```"+fontlist[2:1000]+"```")
@@ -99,7 +102,7 @@ class APIs(commands.Cog):
         time.sleep(.300)
         await ctx.message.author.send("```" + fontlist[3000:4005] + "```")
         time.sleep(.300)
-        await ctx.message.author.send("```" + fontlist[4005:-18] + "```")
+        await ctx.message.author.send("```" + fontlist[4005:] + "```")
 
 
 def setup(bot):
