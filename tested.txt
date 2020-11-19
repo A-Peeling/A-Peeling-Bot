@@ -1,0 +1,9 @@
+tested systems:
+windows 10
+linux (fedora, debian, arch, and nixos)
+openbsd
+illumos (tribblix)
+haiku (nightly)
+debian gnu/hurd (with ln -s /dev/random /dev/urandom)
+
+so basically itll work anywhere ya got python3
