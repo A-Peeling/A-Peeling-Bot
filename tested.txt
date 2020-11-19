@@ -1,6 +1,6 @@
 tested systems:
 windows 10
-linux
+linux (specifically: fedora, debian, arch, and nixos)
 openbsd
 debian gnu/hurd (with ln -s /dev/random /dev/urandom)
 
