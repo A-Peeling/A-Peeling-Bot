@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import platform
 
 startup_extensions = ["fun", "spore", "APIs"]
 
@@ -57,6 +58,20 @@ async def work(ctx):
     print(user)
     await ctx.send("Yes " + user + ", you can work on the bot https://github.com/A-Peeling/A-Peeling-Bot")
 
+
+@client.command(pass_context=True, brief='Print system information')
+async def uname(ctx):
+    unamee = ' '.join(platform.uname())
+    print(unamee)
+#    if platform.name == 'Windows':
+#        await ctx.send("look at me im a windows clown")
+#    if platform.name == 'Darwin':
+#        await ctx.send("macintosh systems not officially supported, yall are just along for the ride")
+#    if platform.name == 'GNU':
+#        await ctx.send("i am very stupid and this is very stupid:")
+#    if platform.name == 'SunOS':
+#        await ctx.send("hold on im sunning myself")
+    await ctx.send("`" + unamee + "`")
 
 if __name__ == "__main__":
     for extension in startup_extensions:
